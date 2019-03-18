@@ -44,13 +44,12 @@
 #endif
 
 #ifdef  LIBEXECDIR
-#  define CAT_PATH(DIR1,DIR2)           DIR1##DIR2
-#  define RAW_UTEMPTER_PATH             CAT_PATH(LIBEXECDIR,/utempter/utempter)
+#  define UTEMPTER_DEFAULT_PATHNAME     XSTR_PATH(LIBEXECDIR)"/utempter/utempter"
 #else
-#  define RAW_UTEMPTER_PATH             /usr/lib/libtempter/utempter/utempter
+#  define UTEMPTER_DEFAULT_PATHNAME     STR_PATH(/usr/lib/libtempter/utempter/utempter)
 #endif
 #define STR_PATH(RAW_STR)               #RAW_STR
-#define UTEMPTER_DEFAULT_PATHNAME       STR_PATH(RAW_UTEMPTER_PATH)
+#define XSTR_PATH(STR)                  STR_PATH(STR)
 
 static const char *utempter_pathname;
 static int saved_fd = -1;
